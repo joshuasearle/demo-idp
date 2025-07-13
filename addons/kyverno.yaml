@@ -1,5 +1,4 @@
 ---
-name: kyverno
 repo:
   name: kyverno
   url: https://kyverno.github.io/kyverno

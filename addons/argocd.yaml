@@ -1,5 +1,4 @@
 ---
-name: argocd
 repo:
   name: argocd
   url: https://argoproj.github.io/argo-helm

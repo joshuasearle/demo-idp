@@ -20,8 +20,6 @@ function main() {
   for addon in $addons; do
     local addon_metadata_file_path="addons/$addon.yaml"
 
-    local addon_name
-    addon_name=$(yq ".name" "$addon_metadata_file_path")
     local addon_repo_name
     addon_repo_name=$(yq ".repo.name" "$addon_metadata_file_path")
     local addon_repo_url
@@ -38,9 +36,9 @@ function main() {
 
     local chart_reference="$addon_repo_name/$chart_name"
 
-    helm template "$addon_name" \
+    helm template "$addon" \
       "$chart_reference" \
-      --namespace "$addon_name" \
+      --namespace "$addon" \
       --create-namespace \
       --version "$chart_version" \
       --release-name \
