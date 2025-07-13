@@ -41,7 +41,7 @@ function main() {
       --namespace "$addon" \
       --create-namespace \
       --version "$chart_version" \
-      > "$build_dir/$addon.yaml"
+      > "$build_dir/$addon/manifest.yaml"
   done
 
   git stash
