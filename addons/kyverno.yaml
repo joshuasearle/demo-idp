@@ -1,8 +1,0 @@
----
-name: kyverno
-repo:
-  name: kyverno
-  url: https://kyverno.github.io/kyverno
-chart:
-  name: kyverno
-  version: 3.4.4
