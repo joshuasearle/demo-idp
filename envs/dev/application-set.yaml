@@ -18,7 +18,7 @@ spec:
       source:
         repoURL: https://github.com/joshuasearle/demo-idp.git
         targetRevision: env/dev
-        path: '{{addon}}'
+        path: '{{addon}}.yaml'
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{addon}}'
