@@ -36,6 +36,7 @@ function main() {
 
     local chart_reference="$addon_repo_name/$chart_name"
 
+    mkdir -p "$build_dir/$addon"
     helm template "$addon" \
       "$chart_reference" \
       --namespace "$addon" \
