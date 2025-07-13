@@ -10,9 +10,8 @@ function main() {
 
   local env="$1"
 
-  if ! git checkout "env/$env" 2>/dev/null; then
-    git checkout -b "env/$env"
-  fi
+  local build_dir
+  build_dir=$(mktemp --directory)
 
   local addons_dir="addons/"
   local addons
@@ -44,8 +43,20 @@ function main() {
       --namespace "$addon_name" \
       --create-namespace \
       --version "$chart_version" \
-      --output-dir ./
+      --output-dir "$build_dir"
   done
+
+  # Switch to the branch for the environment
+  git checkout "env/$env"
+
+  cp -r "$build_dir/"* .
+
+  git add .
+  git commit -m "Render addons for environment: $env"
+
+  git checkout main
+
+  rm -rf "$build_dir"
 }
 
 main "$@"
