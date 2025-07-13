@@ -1,0 +1,8 @@
+---
+name: argocd
+repo:
+  name: argocd
+  url: https://argoproj.github.io/argo-helm
+chart:
+  name: argo-cd
+  version: 8.1.3
