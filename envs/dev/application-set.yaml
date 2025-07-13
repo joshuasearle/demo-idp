@@ -1,0 +1,30 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cluster-addons
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - addon: argocd
+          - addon: kyverno
+  template:
+    metadata:
+      name: '{{addon}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/joshuasearle/demo-idp.git
+        targetRevision: env/dev
+        path: '{{addon}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{addon}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

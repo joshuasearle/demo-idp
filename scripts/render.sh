@@ -46,7 +46,7 @@ function main() {
       --output-dir "$build_dir"
   done
 
-  # Switch to the branch for the environment
+  git stash
   git checkout "env/$env"
 
   cp -r "$build_dir/"* .
@@ -55,6 +55,7 @@ function main() {
   git commit -m "Render addons for environment: $env"
 
   git checkout main
+  git stash pop
 
   rm -rf "$build_dir"
 }
