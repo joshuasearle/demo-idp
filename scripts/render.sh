@@ -43,6 +43,7 @@ function main() {
       --namespace "$addon_name" \
       --create-namespace \
       --version "$chart_version" \
+      --release-name \
       --output-dir "$build_dir"
   done
 
